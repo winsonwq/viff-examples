@@ -14,6 +14,7 @@ Just list some useful examples as below:
 8. **Multiple Environments**
 9. **Browserstack**
 10. **Programmable**
+11. **Using Viff Server (beta in viff@0.8.2)**
 
 ## Examples of finding differences (No.1 - 8)
 
@@ -101,6 +102,21 @@ to take a screenshot for `http://www.google.com` in iphone 5, and generate a ima
 
 ![google.com in iphone 5](http://p3.zhimg.com/23/eb/23ebfae3f92bf61a6a36bbcabceb25d0_m.jpg)
 
+## Using Viff Server (beta in viff@0.8.2)
+
+You could try `viffserver` and [`viff-client`](https://github.com/winsonwq/viff-client) to do the viff testing with your functional testing.
+
+Run the viff server first.
+
+```
+$ viffserver
+```
+
+And integrated `viffclient.post` method in your functional testing code like `example/simple.client.js`. Then, checkout your report again.
+
+```
+$ node example/simple.client.js
+```
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/winsonwq/viff-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
