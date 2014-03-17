@@ -13,7 +13,7 @@ var capabilities = {
 };
 
 var path = ['/', function (driver) {
-  driver.sleep(2000);
+  return driver.sleep(2000);
 }];
 
 viff.takeScreenshot(capabilities, process.argv[2], path, function (bufferImg) {
