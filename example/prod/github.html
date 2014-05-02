@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf8"/>
     <title>My Github Repository</title>
-    <link rel="stylesheet" href="css/pure.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../build/css/pure.css" type="text/css">
+    <link rel="stylesheet" href="../build/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
   </head>
   <body class="github-page">
@@ -31,7 +31,7 @@
         </a>
       </li>
     </script>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="../build/js/jquery.js"></script>
     <script type="text/javascript">
       function init (cb) {
         $.getJSON('https://api.github.com/users/visionmedia/repos?type=owner&per_page=50', function (json) {
@@ -78,7 +78,7 @@
         toTarget.append('<p>showing ' +
           repos.length +
           ' ' +
-          (repos.length >= 1 ? 'repositories' : 'repository') + // for demo purpose
+          (repos.length > 1 ? 'repositories' : 'repository') +
         '</p>');
       }
 
