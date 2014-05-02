@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8"/>
+    <title>My Github Repository</title>
+    <link rel="stylesheet" href="css/pure.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+  </head>
+  <body class="github-page">
+    <h1>TJ Holowaychuk's Repositories</h1>
+    <form class="pure-form" action="#" method="post">
+      <input type="search" name="repo-name" placeholder="Enter Github repo name or description..." autocomplete="off"/>
+
+    </form>
+    <ul class="repo-list">
+      <p>Initializing ...</p>
+    </ul>
+    <script id="repo-list-item-tpl" type="text/template">
+      <li class="repo-list-item">
+        <a href="{{html_url}}">
+          <strong class="repo-name">{{name}}</strong>
+          <p class="repo-description">
+            {{description}}
+          </p>
+          <p class="repo-status">
+            <i class="fa fa-eye"></i>{{watchers_count}}
+            <i class="fa fa-star"></i>{{stargazers_count}}
+            <i class="fa fa-code-fork"></i>{{forks_count}}
+          </p>
+        </a>
+      </li>
+    </script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+      function init (cb) {
+        $.getJSON('https://api.github.com/users/visionmedia/repos?type=owner&per_page=50', function (json) {
+          cb && cb (json);
+        });
+
+        $('form').submit(function () {
+          return false;
+        });
+      }
+
+      function contains (string, str) {
+        return string.toLowerCase().indexOf(str.toLowerCase()) !== -1;
+      }
+
+      function filter (repos, keyword) {
+        return repos.filter(function (repo) {
+          return contains(repo.name, keyword) || contains(repo.description, keyword);
+        });
+      }
+
+      function sort (repos) {
+        return repos.slice().sort(function (repoA, repoB) {
+          return repoB.stargazers_count - repoA.stargazers_count;
+        });
+      }
+
+      function replaceTemplate (template, model) {
+        var tmp = template;
+        while(contains(tmp, '{{')) {
+          tmp = tmp.replace(/\{\{\s?(\w+)\s?\}\}/, function (matched, propName) {
+            return model[propName];
+          });
+        }
+
+        return tmp;
+      }
+
+      function render (repos, toTarget, template) {
+        toTarget.html('');
+        repos.forEach(function (repo) {
+          $(replaceTemplate(template, repo)).appendTo(toTarget);
+        });
+        toTarget.append('<p>showing ' +
+          repos.length +
+          ' ' +
+          (repos.length > 1 ? 'repositories' : 'repository') +
+        '</p>');
+      }
+
+      init(function (json) {
+        var data = json;
+        var repoList = $('.repo-list');
+        var searchInput = $('[type="search"]');
+        var tpl = $('#repo-list-item-tpl').html();
+
+        $('[type="search"]').on('keyup', function (evt) {
+          render(filter(sort(data), searchInput.val()), repoList, tpl);
+        });
+
+        render(sort(data), repoList, tpl);
+      });
+
+      $('[type="search"]').focus();
+
+    </script>
+  </body>
+</html>

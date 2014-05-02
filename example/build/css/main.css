@@ -15,3 +15,77 @@ body {
   color: #fff;
   border: 1px solid #fff;
 }
+
+.github-page {
+  width: 535px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.github-page form {
+
+}
+
+.github-page input {
+  font-size: 150%;
+}
+
+.github-page input[type="search"] {
+  width: 535px;
+}
+
+.github-page .repo-list {
+  text-align: left;
+  margin: 10px 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.github-page .repo-list > p {
+  text-align: center;
+  font-style: italic;
+}
+
+.github-page .repo-list .repo-list-item {
+  list-style-type: none;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+}
+
+.github-page .repo-list .repo-list-item a{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 150px 10px 10px;
+}
+
+.github-page .repo-list .repo-list-item a:hover {
+  background: #eee;
+}
+
+.github-page .repo-list .repo-list-item:last-child {
+  border-bottom: none;
+}
+
+.github-page .repo-list .repo-list-item .repo-name{
+  line-height: 2;
+}
+
+.github-page .repo-list .repo-list-item .repo-status{
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.github-page .repo-list .repo-list-item .repo-status i:before {
+  margin: 0 5px;
+}
+
+.github-page .repo-list .repo-list-item p {
+  line-height: 1.5;
+  margin: 0;
+  font-size: 80%;
+/*  font-style: italic;*/
+}

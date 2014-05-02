@@ -8,7 +8,7 @@ function size(width) {
 
 module.exports = {
   seleniumHost: 'http://localhost:4444/wd/hub',
-  browsers: ['firefox'],
+  browsers: ['chrome'],
   envHosts: {
     build: 'http://localhost:8000/example/build',
     prod: 'http://localhost:8000/example/prod'
