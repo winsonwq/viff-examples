@@ -1,4 +1,4 @@
-var ViffClient = require('./lib/viffclient');
+var ViffClient = require('viff-client');
 
 var client = new ViffClient('http://localhost:3000', {
   name: 'build',
@@ -9,13 +9,12 @@ var client = new ViffClient('http://localhost:3000', {
 var client1 = new ViffClient('http://localhost:3000', {
   name: 'prod',
   host: 'http://localhost1/',
-  capabilities: 'firefox' 
+  capabilities: 'firefox'
 });
 
 
-client.post({ 'description': ['/path', 'selector'] }, 'demo.jpg', function () {
-  client1.post({ 'description': ['/path', 'selector'] }, 'demo.jpg', function () {
+client.post({ 'description': ['/path', 'selector'] }, 'example/demo.jpg', function () {
+  client1.post({ 'description': ['/path', 'selector'] }, 'example/demo.jpg', function () {
     console.log('Done.');
   });
 });
-
