@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var Viff = require('viff');
+var FS = require('fs');
+
+var viff = new Viff('http://localhost:4444/wd/hub');
+var capabilities = {
+  'browserName' : 'firefox'
+};
+
+var path = ['', function (driver) {
+  return driver.sleep(2000);
+}];
+
+viff.takeScreenshot(capabilities, process.argv[2], path, function (bufferImg) {
+  FS.writeFileSync('output.png', bufferImg);
+  viff.closeDrivers();
+});
