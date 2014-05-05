@@ -16,8 +16,10 @@
     <ul class="repo-list">
       <p>Initializing ...</p>
     </ul>
+
+
     <script id="repo-list-item-tpl" type="text/template">
-      <li class="repo-list-item">
+      <li class="repo-list-item" data-name="{{name}}">
         <a href="{{html_url}}">
           <strong class="repo-name">{{name}}</strong>
           <p class="repo-description">
@@ -31,16 +33,29 @@
         </a>
       </li>
     </script>
+
+    <script id="repo-readme-tpl" type="text/template">
+      <article class="repo-readme">
+        <pre>{{content}}</pre>
+      </article>
+    </script>
+
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-      function init (cb) {
+      function getRepos (cb) {
         $.getJSON('https://api.github.com/users/visionmedia/repos?type=owner&per_page=50', function (json) {
           cb && cb (json);
         });
+      }
 
-        $('form').submit(function () {
-          return false;
+      function getRepoReadme (repoName, cb) {
+        $.getJSON('https://api.github.com/repos/visionmedia/' + repoName + '/readme?per_page=10', function (json) {
+          cb && cb (json);
         });
+      }
+
+      function init (cb) {
+        getRepos(cb);
       }
 
       function contains (string, str) {
@@ -87,15 +102,23 @@
         var repoList = $('.repo-list');
         var searchInput = $('[type="search"]');
         var tpl = $('#repo-list-item-tpl').html();
+        var readmeTpl = $('#repo-readme-tpl').html();
 
         $('[type="search"]').on('keyup', function (evt) {
           render(filter(sort(data), searchInput.val()), repoList, tpl);
         });
 
         render(sort(data), repoList, tpl);
-      });
 
-      $('[type="search"]').focus();
+        $('.repo-list').on('click', 'li', function (evt) {
+          var item = $(this);
+          getRepoReadme(item.data('name'), function (readmeObj) {
+            $('.repo-list').find('article.repo-readme').remove();
+            $(replaceTemplate(readmeTpl, { content: atob(readmeObj.content).replace('generator', 'generators') })).appendTo(item);
+          });
+          return false;
+        });
+      });
 
     </script>
   </body>

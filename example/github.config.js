@@ -2,7 +2,7 @@
 
 var config = module.exports = {
   seleniumHost: 'http://localhost:4444/wd/hub',
-  browsers: ['chrome'],
+  browsers: ['firefox'],
   envHosts: {
     build: 'http://localhost:8000/example/build',
     prod: 'http://localhost:8000/example/prod'
@@ -27,9 +27,9 @@ config.test('Search Result', ['/github.html', function (browser) {
     .sleep(1000);
 }]);
 
-config.test('Repository Detail on github', ['/github.html', function (browser) {
+config.test('Open Readme file', ['/github.html', function (browser) {
   return browser
     .waitForElementByCssSelector('.repo-list-item', browser.isDisplayed())
     .elementByCssSelector('.repo-list-item:nth-child(2)').click()
-    .waitForElementByCssSelector('.pagehead', browser.isDisplayed());
+    .waitForElementByCssSelector('.repo-readme', browser.isDisplayed());
 }])
