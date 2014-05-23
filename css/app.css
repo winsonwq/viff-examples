@@ -26,9 +26,9 @@ h1 {margin: 0;font-size: 1.5em;line-height: 42px;}
 .diff-header ul li:first-child {float: left}
 .diffImage{margin-left: 49.99999%; position: relative; margin-top: 80px; z-index: 1}
 .diffImage a {text-align: center;display: block}
-.env-iamge-block {max-width: 90%; margin: 0 auto;}
-.env-iamge-block:last-child {margin-top: 20px;}
-.env-iamge-block label{font-weight: bold;line-height: 2;}
+.env-image-block {max-width: 90%; margin: 0 auto;}
+.env-image-block:last-child {margin-top: 20px;}
+.env-image-block label{font-weight: bold;line-height: 2;}
 .pure-menu.pure-menu-open{border:none;}
 .pure-menu li {border-bottom: 1px solid #f1f1f2;}
 .pure-menu li:hover {opacity: 0.8;}
