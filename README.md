@@ -2,6 +2,10 @@
 
 [Viff](https://github.com/winsonwq/viff) is an automated testing framework to find virsual differences between web pages in different environments(developing, staging, production) and browsers. Find more in [Viff Product Page](http://twers.github.io/Viff-Service/).
 
+## Video Quick Introduction
+
+[![Viff Demo Video](https://i1.ytimg.com/vi/wu-3tVrspkg/0.jpg)](http://youtu.be/wu-3tVrspkg)
+
 Just list some useful examples as below:
 
 1. **Tiny CSS difference**
@@ -119,4 +123,3 @@ $ node example/simple.client.js
 ```
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/winsonwq/viff-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
