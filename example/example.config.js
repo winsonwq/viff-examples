@@ -36,5 +36,6 @@ module.exports = {
       'Responsive': ['/responsive.html', size(480)]
     }
   ],
-  reportFormat: 'file'
+  reportFormat: 'file',
+  maxInstance: 3
 };
