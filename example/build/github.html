@@ -76,8 +76,9 @@
 
       function replaceTemplate (template, model) {
         var tmp = template;
-        while(contains(tmp, '{{')) {
-          tmp = tmp.replace(/\{\{\s?(\w+)\s?\}\}/, function (matched, propName) {
+        var templatePropReg = /\{\{\s?(\w+)\s?\}\}/;
+        while (tmp.match(templatePropReg)) {
+          tmp = tmp.replace(templatePropReg, function (matched, propName) {
             return model[propName];
           });
         }
