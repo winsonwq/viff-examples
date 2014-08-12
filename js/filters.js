@@ -1,8 +1,10 @@
 angular.module('viffReport')
   .filter('imagePath', function () {
     return function(input){
-		return encodeURIComponent(input);
-	}
+	return input.replace(/\%2f/gi, function(t) {
+	    return encodeURIComponent(t)
+	});
+    }
   }).filter('browserFilter', function (){
 	return function(input){
 		return "(" + input[0].toUpperCase() + ")" + input.slice(1);
