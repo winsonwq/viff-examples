@@ -1,0 +1,21 @@
+{
+  "name": "appium_spike",
+  "version": "1.0.0",
+  "description": "appium apike",
+  "main": "appium.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wang Qiu",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "colors": "latest",
+    "mocha": "^1.21.5",
+    "mocha-as-promised": "^2.0.0",
+    "q": "latest",
+    "underscore": "latest",
+    "wd": "^0.3.11"
+  }
+}
